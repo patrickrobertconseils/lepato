@@ -418,9 +418,13 @@
             cursor: pointer;
         }
 
-        .gallery-item:first-child {
+        .gallery-item.wide {
             grid-column: span 2;
             aspect-ratio: 2/1;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
         }
 
         .gallery-item img {
@@ -446,6 +450,182 @@
 
         .gallery-item:hover::after {
             opacity: 1;
+        }
+
+        /* ===== NEWS ===== */
+        .news {
+            background: linear-gradient(
+                180deg,
+                var(--dark) 0%,
+                #1A1822 50%,
+                var(--dark) 100%
+            );
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .news-card {
+            background: rgba(255, 248, 240, 0.04);
+            border: 1px solid rgba(255, 248, 240, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .news-card:hover {
+            border-color: rgba(242, 169, 34, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .news-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-card-img-placeholder {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, rgba(242, 169, 34, 0.1) 0%, rgba(91, 76, 219, 0.1) 100%);
+        }
+
+        .news-card-body {
+            padding: 1.8rem;
+        }
+
+        .news-date {
+            color: var(--sun);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .news-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .news-card-text {
+            font-size: 0.95rem;
+            color: rgba(255, 248, 240, 0.6);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== COLLABORATORS ===== */
+        .collaborators {
+            background: linear-gradient(
+                180deg,
+                var(--dark) 0%,
+                #1C1520 50%,
+                var(--dark) 100%
+            );
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .collab-card {
+            background: rgba(255, 248, 240, 0.04);
+            border: 1px solid rgba(255, 248, 240, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .collab-card:hover {
+            border-color: rgba(242, 169, 34, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .collab-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.2rem;
+            display: block;
+            border: 3px solid rgba(242, 169, 34, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .collab-avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(242, 169, 34, 0.3);
+            background: rgba(242, 169, 34, 0.08);
+            font-size: 2rem;
+        }
+
+        .collab-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .collab-role {
+            color: var(--sun);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .collab-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 248, 240, 0.6);
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .collab-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.3s, color 0.3s;
+        }
+
+        .collab-link:hover {
+            opacity: 1;
+            color: var(--sun);
+        }
+
+        .collab-link svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
         }
 
         /* ===== CONNECT / SOCIALS ===== */
@@ -571,8 +751,12 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            .gallery-item:first-child {
+            .gallery-item.wide {
                 grid-column: span 2;
+            }
+
+            .gallery-item.tall {
+                grid-row: span 2;
             }
         }
 
@@ -610,9 +794,13 @@
                 grid-template-columns: 1fr;
             }
 
-            .gallery-item:first-child {
+            .gallery-item.wide {
                 grid-column: span 1;
                 aspect-ratio: 16/9;
+            }
+
+            .gallery-item.tall {
+                grid-row: span 1;
             }
 
             .social-grid {
@@ -630,7 +818,9 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#about" onclick="closeNav()">À propos</a></li>
             <li><a href="#music" onclick="closeNav()">Musique</a></li>
+            <li><a href="#nouvelles" onclick="closeNav()">Nouvelles</a></li>
             <li><a href="#photos" onclick="closeNav()">Photos</a></li>
+            <li><a href="#equipe" onclick="closeNav()">Équipe</a></li>
             <li><a href="#connect" onclick="closeNav()">Contact</a></li>
         </ul>
         <button class="burger" id="burger" onclick="toggleNav()" aria-label="Menu">
@@ -646,7 +836,7 @@
         <div class="hero-content">
             <span class="hero-tag">Auteur · Compositeur · Interprète</span>
             <img src="images/logo.png" alt="Lepato" class="hero-logo">
-            <p class="hero-subtitle">Pop-rock francophone avec groove, funk et textes engagés. Une vision du monde inspirée par la réfraction de la lumière.</p>
+            <p class="hero-subtitle">Pop-rock francophone depuis Montréal. Du groove, des textes lucides, et l'énergie organique du rock et du funk.</p>
             <div class="hero-cta">
                 <a href="#music" class="btn btn-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -662,8 +852,8 @@
         <div class="about-text reveal">
             <span class="section-label">À propos</span>
             <h2 class="section-title">L'observateur<br>du groove</h2>
-            <p>Le projet solo de Lepato est une incursion rafraîchissante dans la pop-rock francophone, née d'un désir de mettre le groove au centre de la création. Après un premier EP paru en 2024 qui a permis de poser les bases de son identité, Lepato revient avec une proposition plus mature.</p>
-            <p>Son esthétique est celle de l'observateur : une vision du monde inspirée par la réfraction de la lumière dans un aquarium, où les perspectives se déforment pour révéler des vérités cachées. Musicalement, le projet fusionne l'énergie organique du rock et du funk avec des textes engagés en français, rappelant l'univers de Jean Leloup ou de -M-.</p>
+            <p>Depuis Montréal, Lepato trace sa route à travers une pop-rock francophone où le groove mène la danse. Ses textes, à la fois personnels et engagés, posent un regard aiguisé sur le monde à travers une lentille qui lui est propre — celle d'un observateur qui préfère les questions aux réponses.</p>
+            <p>Nourri par l'énergie organique du rock et la chaleur du funk, son univers évoque celui de Jean Leloup, -M- ou Dumas. Après un premier EP paru en 2024, Lepato revient avec une proposition musicale plus affirmée, où la lucidité des mots se fond dans des grooves qui ne demandent qu'à être vécus.</p>
         </div>
         <div class="about-image-wrap reveal">
             <img src="images/photo1.jpg" alt="Lepato - Portrait">
@@ -701,6 +891,44 @@
         </div>
     </section>
 
+    <!-- NEWS -->
+    <section class="news" id="nouvelles">
+        <div class="reveal">
+            <span class="section-label">Nouvelles</span>
+            <h2 class="section-title">Quoi de neuf?</h2>
+        </div>
+        <div class="news-grid">
+
+            <div class="news-card reveal">
+                <div class="news-card-img-placeholder">🎵</div>
+                <div class="news-card-body">
+                    <div class="news-date">Février 2025</div>
+                    <div class="news-card-title">Nouveaux morceaux en préparation</div>
+                    <div class="news-card-text">Lepato est actuellement en studio pour préparer de nouvelles compositions. Plus de détails à venir bientôt!</div>
+                </div>
+            </div>
+
+            <div class="news-card reveal">
+                <div class="news-card-img-placeholder">🎤</div>
+                <div class="news-card-body">
+                    <div class="news-date">2024</div>
+                    <div class="news-card-title">Sortie de l'EP « Et Puis? »</div>
+                    <div class="news-card-text">Le premier EP de Lepato est disponible sur toutes les plateformes. Un premier chapitre qui pose les bases d'un univers pop-rock francophone teinté de groove.</div>
+                </div>
+            </div>
+
+            <div class="news-card reveal">
+                <div class="news-card-img-placeholder">🚀</div>
+                <div class="news-card-body">
+                    <div class="news-date">2024</div>
+                    <div class="news-card-title">Lancement du projet Lepato</div>
+                    <div class="news-card-text">Naissance du projet solo, une incursion rafraîchissante dans la pop-rock francophone née d'un désir de mettre le groove au centre de la création.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- GALLERY -->
     <section class="gallery" id="photos">
         <div class="reveal">
@@ -708,18 +936,116 @@
             <h2 class="section-title">En images</h2>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item reveal">
+            <div class="gallery-item wide reveal">
                 <img src="images/banner.jpg" alt="Lepato en ville">
+            </div>
+            <div class="gallery-item tall reveal">
+                <img src="images/hat.jpg" alt="Lepato en concert">
             </div>
             <div class="gallery-item reveal">
                 <img src="images/photo2.jpg" alt="Lepato portrait">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/pochette.jpg" alt="Et Puis? pochette">
+                <img src="images/shade.jpg" alt="Lepato silhouette">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/hands.jpg" alt="Lepato guitare">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/blue.jpg" alt="Lepato portrait bleu">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/wood.jpg" alt="Lepato acoustique">
             </div>
             <div class="gallery-item reveal">
                 <img src="images/photo1.jpg" alt="Lepato assis">
             </div>
+            <div class="gallery-item reveal">
+                <img src="images/pochette.jpg" alt="Et Puis? pochette">
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATORS -->
+    <section class="collaborators" id="equipe">
+        <div class="reveal">
+            <span class="section-label">L'équipe</span>
+            <h2 class="section-title">Collaborateurs</h2>
+        </div>
+        <div class="collab-grid">
+
+            <!-- Musicien 1 -->
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎸</div>
+                <div class="collab-name">Nom du musicien</div>
+                <div class="collab-role">Guitare</div>
+                <div class="collab-desc">Courte description ou parcours du collaborateur.</div>
+                <a href="#" class="collab-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
+                    Site web
+                </a>
+            </div>
+
+            <!-- Musicien 2 -->
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🥁</div>
+                <div class="collab-name">Nom du musicien</div>
+                <div class="collab-role">Batterie</div>
+                <div class="collab-desc">Courte description ou parcours du collaborateur.</div>
+                <a href="#" class="collab-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
+                    Site web
+                </a>
+            </div>
+
+            <!-- Musicien 3 -->
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎹</div>
+                <div class="collab-name">Nom du musicien</div>
+                <div class="collab-role">Claviers</div>
+                <div class="collab-desc">Courte description ou parcours du collaborateur.</div>
+                <a href="#" class="collab-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
+                    Site web
+                </a>
+            </div>
+
+            <!-- Studio -->
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎛️</div>
+                <div class="collab-name">Nom du studio</div>
+                <div class="collab-role">Enregistrement & mixage</div>
+                <div class="collab-desc">Courte description du studio et de l'ingénieur du son.</div>
+                <a href="#" class="collab-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
+                    Site web
+                </a>
+            </div>
+
+            <!-- Photographe -->
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">📸</div>
+                <div class="collab-name">Nom du photographe</div>
+                <div class="collab-role">Photographie</div>
+                <div class="collab-desc">Courte description ou parcours du photographe.</div>
+                <a href="#" class="collab-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
+                    Portfolio
+                </a>
+            </div>
+
+            <!-- Graphiste -->
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎨</div>
+                <div class="collab-name">Nom du graphiste</div>
+                <div class="collab-role">Direction artistique & graphisme</div>
+                <div class="collab-desc">Courte description ou parcours du graphiste.</div>
+                <a href="#" class="collab-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
+                    Portfolio
+                </a>
+            </div>
+
         </div>
     </section>
 
