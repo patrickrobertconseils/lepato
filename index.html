@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lepato — Pop-Rock Francophone</title>
-
     <meta name="description" content="Lepato - Auteur compositeur interprète. Pop-rock francophone avec groove, funk et textes engagés.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -276,12 +275,13 @@
             width: 100%;
             border-radius: 16px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            display: block;
         }
 
         .about-image-wrap::before {
             content: '';
             position: absolute;
-            top: -20px;
+            top: 20px;
             right: -20px;
             width: 100%;
             height: 100%;
@@ -399,60 +399,6 @@
             fill: currentColor;
         }
 
-        /* ===== GALLERY ===== */
-        .gallery {
-            background: var(--dark);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            cursor: pointer;
-        }
-
-        .gallery-item.wide {
-            grid-column: span 2;
-            aspect-ratio: 2/1;
-        }
-
-        .gallery-item.tall {
-            grid-row: span 2;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(26, 18, 24, 0.5) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.06);
-            filter: brightness(1.1) saturate(1.2);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
         /* ===== NEWS ===== */
         .news {
             background: linear-gradient(
@@ -465,9 +411,10 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-top: 3rem;
+            max-width: 700px;
         }
 
         .news-card {
@@ -527,106 +474,58 @@
             line-height: 1.6;
         }
 
-        /* ===== COLLABORATORS ===== */
-        .collaborators {
-            background: linear-gradient(
-                180deg,
-                var(--dark) 0%,
-                #1C1520 50%,
-                var(--dark) 100%
-            );
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--dark);
         }
 
-        .collab-grid {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
-        .collab-card {
-            background: rgba(255, 248, 240, 0.04);
-            border: 1px solid rgba(255, 248, 240, 0.08);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: border-color 0.3s, transform 0.3s;
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
         }
 
-        .collab-card:hover {
-            border-color: rgba(242, 169, 34, 0.3);
-            transform: translateY(-4px);
+        .gallery-item.wide {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
         }
 
-        .collab-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            margin: 0 auto 1.2rem;
-            display: block;
-            border: 3px solid rgba(242, 169, 34, 0.3);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
         }
 
-        .collab-avatar-placeholder {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid rgba(242, 169, 34, 0.3);
-            background: rgba(242, 169, 34, 0.08);
-            font-size: 2rem;
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 18, 24, 0.5) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
-        .collab-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
+        .gallery-item:hover img {
+            transform: scale(1.06);
+            filter: brightness(1.1) saturate(1.2);
         }
 
-        .collab-role {
-            color: var(--sun);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .collab-desc {
-            font-size: 0.9rem;
-            color: rgba(255, 248, 240, 0.6);
-            font-weight: 300;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .collab-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            opacity: 0.7;
-            transition: opacity 0.3s, color 0.3s;
-        }
-
-        .collab-link:hover {
+        .gallery-item:hover::after {
             opacity: 1;
-            color: var(--sun);
-        }
-
-        .collab-link svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
         }
 
         /* ===== CONNECT / SOCIALS ===== */
@@ -810,7 +709,7 @@
             }
         }
     </style>
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -822,10 +721,9 @@
         <a href="#" class="nav-logo">lepato</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about" onclick="closeNav()">À propos</a></li>
-            <li><a href="#music" onclick="closeNav()">Musique</a></li>
             <li><a href="#nouvelles" onclick="closeNav()">Nouvelles</a></li>
+            <li><a href="#music" onclick="closeNav()">Musique</a></li>
             <li><a href="#photos" onclick="closeNav()">Photos</a></li>
-            <li><a href="#equipe" onclick="closeNav()">Équipe</a></li>
             <li><a href="#connect" onclick="closeNav()">Contact</a></li>
         </ul>
         <button class="burger" id="burger" onclick="toggleNav()" aria-label="Menu">
@@ -866,6 +764,26 @@
         <div class="about-decor"></div>
     </section>
 
+    <!-- NEWS (moved before Music) -->
+    <section class="news" id="nouvelles">
+        <div class="reveal">
+            <span class="section-label">Nouvelles</span>
+            <h2 class="section-title">Quoi de neuf?</h2>
+        </div>
+        <div class="news-grid">
+
+            <div class="news-card reveal">
+                <div class="news-card-img-placeholder">🎵</div>
+                <div class="news-card-body">
+                    <div class="news-date">Automne 2026</div>
+                    <div class="news-card-title">Nouvel EP à venir — Automne 2026</div>
+                    <div class="news-card-text">Lepato revient avec un deuxième EP cet automne. Nouveaux morceaux, nouveau spectacle — rendez-vous en octobre. Restez à l'affût.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- MUSIC -->
     <section class="music" id="music">
         <div class="reveal">
@@ -893,44 +811,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- NEWS -->
-    <section class="news" id="nouvelles">
-        <div class="reveal">
-            <span class="section-label">Nouvelles</span>
-            <h2 class="section-title">Quoi de neuf?</h2>
-        </div>
-        <div class="news-grid">
-
-            <div class="news-card reveal">
-                <div class="news-card-img-placeholder">🎵</div>
-                <div class="news-card-body">
-                    <div class="news-date">Février 2025</div>
-                    <div class="news-card-title">Nouveaux morceaux en préparation</div>
-                    <div class="news-card-text">Lepato est actuellement en studio pour préparer de nouvelles compositions. Plus de détails à venir bientôt!</div>
-                </div>
-            </div>
-
-            <div class="news-card reveal">
-                <div class="news-card-img-placeholder">🎤</div>
-                <div class="news-card-body">
-                    <div class="news-date">2024</div>
-                    <div class="news-card-title">Sortie de l'EP « Et Puis? »</div>
-                    <div class="news-card-text">Le premier EP de Lepato est disponible sur toutes les plateformes. Un premier chapitre qui pose les bases d'un univers pop-rock francophone teinté de groove.</div>
-                </div>
-            </div>
-
-            <div class="news-card reveal">
-                <div class="news-card-img-placeholder">🚀</div>
-                <div class="news-card-body">
-                    <div class="news-date">2024</div>
-                    <div class="news-card-title">Lancement du projet Lepato</div>
-                    <div class="news-card-text">Naissance du projet solo, une incursion rafraîchissante dans la pop-rock francophone née d'un désir de mettre le groove au centre de la création.</div>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -971,15 +851,14 @@
         </div>
     </section>
 
-    <!-- COLLABORATORS -->
+    <!-- COLLABORATORS (masqué pour réactivation future) -->
+    <!--
     <section class="collaborators" id="equipe">
         <div class="reveal">
             <span class="section-label">L'équipe</span>
             <h2 class="section-title">Collaborateurs</h2>
         </div>
         <div class="collab-grid">
-
-            <!-- Musicien 1 -->
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">🎸</div>
                 <div class="collab-name">Nom du musicien</div>
@@ -990,8 +869,6 @@
                     Site web
                 </a>
             </div>
-
-            <!-- Musicien 2 -->
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">🥁</div>
                 <div class="collab-name">Nom du musicien</div>
@@ -1002,8 +879,6 @@
                     Site web
                 </a>
             </div>
-
-            <!-- Musicien 3 -->
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">🎹</div>
                 <div class="collab-name">Nom du musicien</div>
@@ -1014,8 +889,6 @@
                     Site web
                 </a>
             </div>
-
-            <!-- Studio -->
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">🎛️</div>
                 <div class="collab-name">Nom du studio</div>
@@ -1026,8 +899,6 @@
                     Site web
                 </a>
             </div>
-
-            <!-- Photographe -->
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">📸</div>
                 <div class="collab-name">Nom du photographe</div>
@@ -1038,8 +909,6 @@
                     Portfolio
                 </a>
             </div>
-
-            <!-- Graphiste -->
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">🎨</div>
                 <div class="collab-name">Nom du graphiste</div>
@@ -1050,9 +919,9 @@
                     Portfolio
                 </a>
             </div>
-
         </div>
     </section>
+    -->
 
     <!-- CONNECT -->
     <section class="connect" id="connect">
@@ -1082,7 +951,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Lepato. Tous droits réservés.</p>
+        <p>&copy; 2026 Lepato. Tous droits réservés.</p>
     </footer>
 
     <script>
