@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lepato — Pop-Rock Francophone</title>
-    <meta name="description" content="Lepato - Auteur compositeur interprète. Pop-rock francophone avec groove, funk et textes engagés.">
+    <title>lepato — Pop-Rock Francophone</title>
+    <meta name="description" content="lepato - Auteur compositeur interprète. Pop-rock francophone avec groove, funk et textes engagés.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -326,6 +326,10 @@
             border-radius: 20px;
             padding: 2rem;
             transition: border-color 0.3s;
+        }
+
+        .ep-card + .ep-card {
+            margin-top: 2rem;
         }
 
         .ep-card:hover {
@@ -737,12 +741,12 @@
 
     <!-- HERO -->
     <section class="hero">
-        <img src="images/banner.jpg" alt="Lepato" class="hero-img">
+        <img src="images/banner.jpg" alt="lepato" class="hero-img">
         <div class="hero-overlay"></div>
         <div class="hero-color-accent"></div>
         <div class="hero-content">
             <span class="hero-tag">Auteur · Compositeur · Interprète</span>
-            <img src="images/logo.png" alt="Lepato" class="hero-logo">
+            <img src="images/logo.png" alt="lepato" class="hero-logo">
             <p class="hero-subtitle">Pop-rock francophone depuis Montréal. Du groove, des textes lucides, et l'énergie organique du rock et du funk.</p>
             <div class="hero-cta">
                 <a href="#music" class="btn btn-primary">
@@ -759,11 +763,11 @@
         <div class="about-text reveal">
             <span class="section-label">À propos</span>
             <h2 class="section-title">Expression simple<br>d'un monde complexe</h2>
-            <p>Depuis Montréal, Lepato trace sa route à travers une pop-rock francophone où le groove mène la danse. Ses textes, à la fois personnels et engagés, posent un regard aiguisé sur le monde à travers une lentille qui lui est propre — celle d'un observateur qui préfère les questions aux réponses.</p>
-            <p>Nourri par l'énergie organique du rock et la chaleur du funk, son univers évoque celui de Jean Leloup ou de -M-. Après un premier EP paru en 2024, Lepato revient avec une proposition musicale plus affirmée, où la lucidité des mots se fond dans des grooves qui ne demandent qu'à être vécus.</p>
+            <p>Depuis Montréal, lepato trace sa route à travers une pop-rock francophone où le groove mène la danse. Ses textes, à la fois personnels et engagés, posent un regard aiguisé sur le monde à travers une lentille qui lui est propre — celle d'un observateur qui préfère les questions aux réponses.</p>
+            <p>Nourri par l'énergie organique du rock et la chaleur du funk, son univers évoque celui de Jean Leloup ou de -M-. Après un premier EP paru en 2024, lepato revient avec une proposition musicale plus affirmée, où la lucidité des mots se fond dans des grooves qui ne demandent qu'à être vécus.</p>
         </div>
         <div class="about-image-wrap reveal">
-            <img src="images/photo1.jpg" alt="Lepato - Portrait">
+            <img src="images/photo1.jpg" alt="lepato - Portrait">
         </div>
         <div class="about-decor"></div>
     </section>
@@ -857,13 +861,23 @@
                         </circle>
                         <text x="44" y="24" fill="#FFF8F0" opacity="0.6" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="2">REC</text>
                         <!-- Subtle text -->
-                        <text x="350" y="185" text-anchor="middle" fill="#FFF8F0" opacity="0.12" font-family="'Playfair Display', serif" font-size="14" letter-spacing="8">À VENIR</text>
+                        <text x="350" y="185" text-anchor="middle" fill="#FFF8F0" opacity="0.12" font-family="'Playfair Display', serif" font-size="14" letter-spacing="8">16 DÉCEMBRE · L'ESCOGRIFFE</text>
                     </svg>
                 </div>
                 <div class="news-card-body">
-                    <div class="news-date">Automne 2026</div>
-                    <div class="news-card-title">Nouvel EP à venir — Automne 2026</div>
-                    <div class="news-card-text">Lepato revient avec un deuxième EP cet automne. Nouveaux morceaux, nouveau spectacle — rendez-vous en octobre. Restez à l'affût.</div>
+                    <div class="news-date">16 décembre 2026</div>
+                    <div class="news-card-title">Concert de lancement d'Encore Plus!</div>
+                    <div class="news-card-text">lepato célèbre la sortie de son deuxième EP en formule live à L'Escogriffe, à Montréal. Le collectif Ruelle Against The Machine est invité pour un jam de clôture.</div>
+                    <a href="https://lepointdevente.com/billets/lepato" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1.2rem;">Billets</a>
+                </div>
+            </div>
+
+            <div class="news-card reveal">
+                <img src="images/pochette-essaye.jpg" alt="Essaye - pochette du single" class="news-card-img" style="object-position: top;">
+                <div class="news-card-body">
+                    <div class="news-date">Octobre 2026</div>
+                    <div class="news-card-title">Essaye, premier extrait d'Encore Plus!</div>
+                    <div class="news-card-text">Un soft rock solaire et groovy, porté par des guitares, un Rhodes chaleureux et une section rythmique qui invite au mouvement. Le vidéoclip est disponible sur YouTube.</div>
                 </div>
             </div>
 
@@ -874,14 +888,32 @@
     <section class="music" id="music">
         <div class="reveal">
             <span class="section-label">Musique</span>
-            <h2 class="section-title">Écouter Lepato</h2>
+            <h2 class="section-title">Écouter lepato</h2>
         </div>
+        <div class="ep-card reveal">
+            <img src="images/pochette-essaye.jpg" alt="Essaye - pochette du single" class="ep-cover">
+            <div class="ep-info">
+                <div class="ep-year">EP · Décembre 2026</div>
+                <h3>Encore Plus!</h3>
+                <p>Le deuxième EP de lepato, réalisé par Julien Álvarez Thomet, dévoilé en trois singles : Essaye, À contresens et Faux pas. Premier extrait : Essaye.</p>
+                <div class="streaming-grid">
+                    <a href="https://ffm.to/essaye-single" target="_blank" rel="noopener" class="stream-btn">
+                        Écouter Essaye
+                    </a>
+                    <a href="https://youtu.be/WCJkCX4cuIY" target="_blank" rel="noopener" class="stream-btn youtube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#1A1218" d="M9.545 15.568V8.432L15.818 12z"/></svg>
+                        Vidéoclip
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="ep-card reveal">
             <img src="images/pochette.jpg" alt="Et Puis? - EP" class="ep-cover">
             <div class="ep-info">
                 <div class="ep-year">EP · 2024</div>
                 <h3>Et Puis?</h3>
-                <p>Le premier EP de Lepato pose les bases d'un univers pop-rock francophone teinté de groove et de funk.</p>
+                <p>Le premier EP de lepato pose les bases d'un univers pop-rock francophone teinté de groove et de funk.</p>
                 <div class="streaming-grid">
                     <a href="https://open.spotify.com/intl-fr/artist/3qfYZ08eqfKf0qjyGdxuPL" target="_blank" rel="noopener" class="stream-btn spotify">
                         <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -908,28 +940,28 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item wide reveal">
-                <img src="images/banner.jpg" alt="Lepato en ville">
+                <img src="images/banner.jpg" alt="lepato en ville">
             </div>
             <div class="gallery-item tall reveal">
-                <img src="images/hat.jpg" alt="Lepato en concert">
+                <img src="images/hat.jpg" alt="lepato en concert">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/photo2.jpg" alt="Lepato portrait">
+                <img src="images/photo2.jpg" alt="lepato portrait">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/shade.jpg" alt="Lepato silhouette">
+                <img src="images/shade.jpg" alt="lepato silhouette">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/hands.jpg" alt="Lepato guitare">
+                <img src="images/hands.jpg" alt="lepato guitare">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/blue.jpg" alt="Lepato portrait bleu">
+                <img src="images/blue.jpg" alt="lepato portrait bleu">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/wood.jpg" alt="Lepato acoustique">
+                <img src="images/wood.jpg" alt="lepato acoustique">
             </div>
             <div class="gallery-item reveal">
-                <img src="images/photo1.jpg" alt="Lepato assis">
+                <img src="images/photo1.jpg" alt="lepato assis">
             </div>
             <div class="gallery-item reveal">
                 <img src="images/pochette.jpg" alt="Et Puis? pochette">
@@ -1013,7 +1045,7 @@
     <section class="connect" id="connect">
         <div class="reveal">
             <span class="section-label">Connecter</span>
-            <h2 class="section-title">Suivre Lepato</h2>
+            <h2 class="section-title">Suivre lepato</h2>
         </div>
         <div class="social-grid reveal">
             <a href="https://www.facebook.com/profile.php?id=61554589496382" target="_blank" rel="noopener" class="social-link">
@@ -1037,7 +1069,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Lepato. Tous droits réservés.</p>
+        <p>&copy; 2026 lepato. Tous droits réservés.</p>
     </footer>
 
     <script>
