@@ -555,6 +555,21 @@ section {
     line-height: 1.5;
 }
 
+.collab-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+.collab-link:hover {
+    opacity: 1;
+    color: var(--sun);
+}
+
 /* ===== GALLERY ===== */
 .gallery {
     background: var(--dark);
@@ -617,6 +632,11 @@ section {
     letter-spacing: 0.04em;
     color: var(--cream);
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+}
+
+.gallery-credit:hover {
+    color: var(--sun);
 }
 
 .gallery-page {
