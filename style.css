@@ -477,6 +477,13 @@ section {
     line-height: 1.6;
 }
 
+/* Carte entière cliquable */
+.card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
 /* ===== COLLABORATORS ===== */
 .collaborators {
     background: linear-gradient(
@@ -565,7 +572,7 @@ section {
     transition: opacity 0.3s, color 0.3s;
 }
 
-.collab-link:hover {
+.collab-card:hover .collab-link {
     opacity: 1;
     color: var(--sun);
 }
