@@ -8,715 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --sun: #F2A922;
-            --coral: #E85D4A;
-            --electric: #5B4CDB;
-            --teal: #1DB9A0;
-            --cream: #FFF8F0;
-            --dark: #1A1218;
-            --warm-gray: #3D3438;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--dark);
-            color: var(--cream);
-            overflow-x: hidden;
-        }
-
-        /* ===== NAV ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.4s, backdrop-filter 0.4s;
-        }
-
-        nav.scrolled {
-            background: rgba(26, 18, 24, 0.85);
-            backdrop-filter: blur(20px);
-        }
-
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--cream);
-            text-decoration: none;
-            letter-spacing: 0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 0.95rem;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--sun);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--sun); }
-
-        /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .hero-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 30%;
-            filter: brightness(0.6) contrast(1.1);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                transparent 30%,
-                rgba(26, 18, 24, 0.4) 60%,
-                var(--dark) 100%
-            );
-        }
-
-        .hero-color-accent {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: linear-gradient(
-                135deg,
-                rgba(242, 169, 34, 0.15) 0%,
-                rgba(232, 93, 74, 0.1) 50%,
-                transparent 100%
-            );
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 6vw 8vh;
-            max-width: 900px;
-        }
-
-        .hero-tag {
-            display: inline-block;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--sun);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.3s forwards;
-        }
-
-        .hero-logo {
-            display: block;
-            width: clamp(280px, 45vw, 550px);
-            height: auto;
-            margin-bottom: 1.2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.5s forwards;
-            filter: drop-shadow(0 4px 30px rgba(0, 0, 0, 0.4));
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            font-weight: 300;
-            line-height: 1.6;
-            max-width: 520px;
-            opacity: 0.85;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.7s forwards;
-        }
-
-        .hero-cta {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.9s forwards;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 0.03em;
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--sun);
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            background: var(--coral);
-            color: var(--cream);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(232, 93, 74, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--cream);
-            border: 1.5px solid rgba(255, 248, 240, 0.4);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--sun);
-            color: var(--sun);
-            transform: translateY(-2px);
-        }
-
-        /* ===== SECTION HELPERS ===== */
-        section {
-            padding: 8rem 6vw;
-            position: relative;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--sun);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-        }
-
-        /* ===== ABOUT ===== */
-        .about {
-            background: var(--dark);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-weight: 300;
-            color: rgba(255, 248, 240, 0.8);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-image-wrap {
-            position: relative;
-        }
-
-        .about-image-wrap img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            display: block;
-        }
-
-        .about-image-wrap::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--sun);
-            border-radius: 16px;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .about-decor {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(91, 76, 219, 0.12) 0%, transparent 70%);
-            top: 10%;
-            right: -150px;
-            pointer-events: none;
-        }
-
-        /* ===== MUSIC / EP ===== */
-        .music {
-            background: linear-gradient(
-                180deg,
-                var(--dark) 0%,
-                #1E1520 50%,
-                var(--dark) 100%
-            );
-            text-align: center;
-        }
-
-        .ep-card {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 3rem;
-            align-items: center;
-            max-width: 800px;
-            margin: 3rem auto 0;
-            text-align: left;
-            background: rgba(255, 248, 240, 0.04);
-            border: 1px solid rgba(255, 248, 240, 0.08);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: border-color 0.3s;
-        }
-
-        .ep-card + .ep-card {
-            margin-top: 2rem;
-        }
-
-        .ep-card:hover {
-            border-color: rgba(242, 169, 34, 0.3);
-        }
-
-        .ep-cover {
-            width: 220px;
-            height: 220px;
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .ep-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .ep-info .ep-year {
-            color: var(--sun);
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
-        .ep-info p {
-            color: rgba(255, 248, 240, 0.7);
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        /* ===== STREAMING BUTTONS ===== */
-        .streaming-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-        }
-
-        .stream-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 1.5px solid rgba(255, 248, 240, 0.15);
-            color: var(--cream);
-            background: rgba(255, 248, 240, 0.05);
-        }
-
-        .stream-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .stream-btn.spotify:hover { background: #1DB954; border-color: #1DB954; }
-        .stream-btn.apple:hover { background: #FC3C44; border-color: #FC3C44; }
-        .stream-btn.deezer:hover { background: #A238FF; border-color: #A238FF; }
-        .stream-btn.youtube:hover { background: #FF0000; border-color: #FF0000; }
-
-        .stream-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-
-        /* ===== NEWS ===== */
-        .news {
-            background: linear-gradient(
-                180deg,
-                var(--dark) 0%,
-                #1A1822 50%,
-                var(--dark) 100%
-            );
-            text-align: center;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .news-card {
-            background: rgba(255, 248, 240, 0.04);
-            border: 1px solid rgba(255, 248, 240, 0.08);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .news-card:hover {
-            border-color: rgba(242, 169, 34, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .news-card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .news-card-img-placeholder {
-            width: 100%;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            background: linear-gradient(135deg, rgba(242, 169, 34, 0.1) 0%, rgba(91, 76, 219, 0.1) 100%);
-        }
-
-        .news-card-body {
-            padding: 1.8rem;
-            text-align: left;
-        }
-
-        .news-date {
-            color: var(--sun);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-        }
-
-        .news-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            line-height: 1.3;
-        }
-
-        .news-card-text {
-            font-size: 0.95rem;
-            color: rgba(255, 248, 240, 0.6);
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        /* ===== GALLERY ===== */
-        .gallery {
-            background: var(--dark);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            cursor: pointer;
-        }
-
-        .gallery-item.wide {
-            grid-column: span 2;
-            aspect-ratio: 2/1;
-        }
-
-        .gallery-item.tall {
-            grid-row: span 2;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(26, 18, 24, 0.5) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.06);
-            filter: brightness(1.1) saturate(1.2);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        /* ===== CONNECT / SOCIALS ===== */
-        .connect {
-            background: linear-gradient(
-                135deg,
-                #1E1520 0%,
-                var(--dark) 50%,
-                #1A1520 100%
-            );
-            text-align: center;
-            padding-bottom: 4rem;
-        }
-
-        .social-grid {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--cream);
-            border: 1.5px solid rgba(255, 248, 240, 0.12);
-            background: rgba(255, 248, 240, 0.04);
-            transition: all 0.35s;
-        }
-
-        .social-link:hover {
-            border-color: var(--sun);
-            background: rgba(242, 169, 34, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.85rem;
-            color: rgba(255, 248, 240, 0.35);
-            border-top: 1px solid rgba(255, 248, 240, 0.06);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== MOBILE BURGER ===== */
-        .burger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 200;
-            background: none;
-            border: none;
-            padding: 0.5rem;
-        }
-
-        .burger span {
-            width: 26px;
-            height: 2px;
-            background: var(--cream);
-            transition: all 0.3s;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .about {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image-wrap { order: -1; }
-            .about-image-wrap::before { display: none; }
-
-            .ep-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .ep-cover {
-                width: 200px;
-                height: 200px;
-                margin: 0 auto;
-            }
-
-            .streaming-grid {
-                justify-content: center;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .gallery-item.wide {
-                grid-column: span 2;
-            }
-
-            .gallery-item.tall {
-                grid-row: span 2;
-            }
-        }
-
-        @media (max-width: 680px) {
-            section { padding: 5rem 5vw; }
-
-            .burger { display: flex; }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70vw;
-                max-width: 300px;
-                background: rgba(26, 18, 24, 0.97);
-                backdrop-filter: blur(30px);
-                flex-direction: column;
-                padding: 6rem 2.5rem 2rem;
-                gap: 2rem;
-                transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            }
-
-            .nav-links.open { right: 0; }
-
-            .nav-links a {
-                font-size: 1.2rem;
-            }
-
-            .hero-content {
-                padding: 0 5vw 6vh;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-item.wide {
-                grid-column: span 1;
-                aspect-ratio: 16/9;
-            }
-
-            .gallery-item.tall {
-                grid-row: span 1;
-            }
-
-            .social-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -731,7 +23,8 @@
             <li><a href="#about" onclick="closeNav()">À propos</a></li>
             <li><a href="#nouvelles" onclick="closeNav()">Nouvelles</a></li>
             <li><a href="#music" onclick="closeNav()">Musique</a></li>
-            <li><a href="#photos" onclick="closeNav()">Photos</a></li>
+            <li><a href="#equipe" onclick="closeNav()">Équipe</a></li>
+            <li><a href="galerie.html">Photos</a></li>
             <li><a href="#connect" onclick="closeNav()">Contact</a></li>
         </ul>
         <button class="burger" id="burger" onclick="toggleNav()" aria-label="Menu">
@@ -781,89 +74,7 @@
         <div class="news-grid">
 
             <div class="news-card reveal">
-                <div class="news-card-img-placeholder" style="background: linear-gradient(135deg, #1A1218 0%, #2A1E28 40%, #1A1218 100%); position: relative; overflow: hidden;">
-                    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;">
-                        <!-- Abstract waveform / groove visualization -->
-                        <defs>
-                            <linearGradient id="glow1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#F2A922;stop-opacity:0" />
-                                <stop offset="30%" style="stop-color:#F2A922;stop-opacity:0.8" />
-                                <stop offset="50%" style="stop-color:#E85D4A;stop-opacity:0.9" />
-                                <stop offset="70%" style="stop-color:#5B4CDB;stop-opacity:0.7" />
-                                <stop offset="100%" style="stop-color:#5B4CDB;stop-opacity:0" />
-                            </linearGradient>
-                            <linearGradient id="glow2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#E85D4A;stop-opacity:0" />
-                                <stop offset="40%" style="stop-color:#E85D4A;stop-opacity:0.5" />
-                                <stop offset="60%" style="stop-color:#F2A922;stop-opacity:0.6" />
-                                <stop offset="100%" style="stop-color:#F2A922;stop-opacity:0" />
-                            </linearGradient>
-                            <filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter>
-                            <filter id="blur2"><feGaussianBlur stdDeviation="6"/></filter>
-                        </defs>
-                        <!-- Background glow -->
-                        <ellipse cx="350" cy="100" rx="250" ry="60" fill="#F2A922" opacity="0.06" filter="url(#blur2)"/>
-                        <ellipse cx="300" cy="110" rx="180" ry="40" fill="#E85D4A" opacity="0.05" filter="url(#blur2)"/>
-                        <!-- Sound wave bars -->
-                        <g transform="translate(140, 100)" opacity="0.9">
-                            <rect x="0" y="-15" width="4" height="30" rx="2" fill="url(#glow1)" opacity="0.4"/>
-                            <rect x="12" y="-25" width="4" height="50" rx="2" fill="url(#glow1)" opacity="0.5"/>
-                            <rect x="24" y="-40" width="4" height="80" rx="2" fill="url(#glow1)" opacity="0.7"/>
-                            <rect x="36" y="-55" width="4" height="110" rx="2" fill="url(#glow1)" opacity="0.85"/>
-                            <rect x="48" y="-45" width="4" height="90" rx="2" fill="url(#glow1)" opacity="0.75"/>
-                            <rect x="60" y="-60" width="4" height="120" rx="2" fill="url(#glow1)" opacity="0.9"/>
-                            <rect x="72" y="-50" width="4" height="100" rx="2" fill="url(#glow1)" opacity="0.8"/>
-                            <rect x="84" y="-65" width="5" height="130" rx="2.5" fill="url(#glow1)" opacity="1"/>
-                            <rect x="96" y="-55" width="4" height="110" rx="2" fill="url(#glow1)" opacity="0.85"/>
-                            <rect x="108" y="-70" width="5" height="140" rx="2.5" fill="url(#glow1)" opacity="1"/>
-                            <rect x="120" y="-60" width="5" height="120" rx="2.5" fill="url(#glow1)" opacity="0.9"/>
-                            <rect x="132" y="-75" width="5" height="150" rx="2.5" fill="url(#glow1)" opacity="1"/>
-                            <rect x="144" y="-65" width="5" height="130" rx="2.5" fill="url(#glow1)" opacity="0.95"/>
-                            <rect x="156" y="-55" width="4" height="110" rx="2" fill="url(#glow1)" opacity="0.85"/>
-                            <rect x="168" y="-70" width="5" height="140" rx="2.5" fill="url(#glow1)" opacity="1"/>
-                            <rect x="180" y="-60" width="5" height="120" rx="2.5" fill="url(#glow1)" opacity="0.9"/>
-                            <rect x="192" y="-75" width="5" height="150" rx="2.5" fill="url(#glow1)" opacity="1"/>
-                            <rect x="204" y="-65" width="5" height="130" rx="2.5" fill="url(#glow1)" opacity="0.95"/>
-                            <rect x="216" y="-50" width="4" height="100" rx="2" fill="url(#glow1)" opacity="0.8"/>
-                            <rect x="228" y="-60" width="5" height="120" rx="2.5" fill="url(#glow1)" opacity="0.9"/>
-                            <rect x="240" y="-70" width="5" height="140" rx="2.5" fill="url(#glow1)" opacity="1"/>
-                            <rect x="252" y="-55" width="4" height="110" rx="2" fill="url(#glow1)" opacity="0.85"/>
-                            <rect x="264" y="-45" width="4" height="90" rx="2" fill="url(#glow1)" opacity="0.75"/>
-                            <rect x="276" y="-60" width="5" height="120" rx="2.5" fill="url(#glow1)" opacity="0.9"/>
-                            <rect x="288" y="-50" width="4" height="100" rx="2" fill="url(#glow1)" opacity="0.8"/>
-                            <rect x="300" y="-40" width="4" height="80" rx="2" fill="url(#glow1)" opacity="0.7"/>
-                            <rect x="312" y="-55" width="4" height="110" rx="2" fill="url(#glow1)" opacity="0.85"/>
-                            <rect x="324" y="-45" width="4" height="90" rx="2" fill="url(#glow1)" opacity="0.75"/>
-                            <rect x="336" y="-35" width="4" height="70" rx="2" fill="url(#glow1)" opacity="0.6"/>
-                            <rect x="348" y="-25" width="4" height="50" rx="2" fill="url(#glow1)" opacity="0.5"/>
-                            <rect x="360" y="-20" width="4" height="40" rx="2" fill="url(#glow1)" opacity="0.45"/>
-                            <rect x="372" y="-30" width="4" height="60" rx="2" fill="url(#glow1)" opacity="0.55"/>
-                            <rect x="384" y="-20" width="4" height="40" rx="2" fill="url(#glow1)" opacity="0.4"/>
-                            <rect x="396" y="-12" width="4" height="24" rx="2" fill="url(#glow1)" opacity="0.35"/>
-                            <rect x="408" y="-8" width="4" height="16" rx="2" fill="url(#glow1)" opacity="0.25"/>
-                        </g>
-                        <!-- Animated sine wave overlay -->
-                        <path d="M0,100 C30,85 60,70 90,80 C120,90 150,115 180,105 C210,95 240,75 270,85 C300,95 330,120 360,110 C390,100 420,80 450,90 C480,100 510,115 540,105 C570,95 600,80 630,90 C660,100 690,110 700,105" fill="none" stroke="#F2A922" stroke-width="2" opacity="0.5" filter="url(#blur1)">
-                            <animate attributeName="d" dur="3s" repeatCount="indefinite" values="
-                                M0,100 C30,85 60,70 90,80 C120,90 150,115 180,105 C210,95 240,75 270,85 C300,95 330,120 360,110 C390,100 420,80 450,90 C480,100 510,115 540,105 C570,95 600,80 630,90 C660,100 690,110 700,105;
-                                M0,105 C30,95 60,80 90,90 C120,100 150,110 180,95 C210,80 240,85 270,100 C300,115 330,105 360,90 C390,80 420,95 450,110 C480,105 510,90 540,85 C570,100 600,115 630,105 C660,90 690,85 700,95;
-                                M0,100 C30,85 60,70 90,80 C120,90 150,115 180,105 C210,95 240,75 270,85 C300,95 330,120 360,110 C390,100 420,80 450,90 C480,100 510,115 540,105 C570,95 600,80 630,90 C660,100 690,110 700,105"/>
-                        </path>
-                        <path d="M0,100 C35,90 70,78 105,88 C140,98 175,118 210,108 C245,98 280,78 315,88 C350,98 385,115 420,105 C455,95 490,82 525,92 C560,102 595,112 630,102 C665,92 690,88 700,95" fill="none" stroke="#E85D4A" stroke-width="1.5" opacity="0.35">
-                            <animate attributeName="d" dur="4s" repeatCount="indefinite" values="
-                                M0,100 C35,90 70,78 105,88 C140,98 175,118 210,108 C245,98 280,78 315,88 C350,98 385,115 420,105 C455,95 490,82 525,92 C560,102 595,112 630,102 C665,92 690,88 700,95;
-                                M0,95 C35,105 70,112 105,102 C140,92 175,82 210,92 C245,102 280,118 315,108 C350,98 385,85 420,95 C455,105 490,115 525,105 C560,95 595,85 630,95 C665,105 690,112 700,102;
-                                M0,100 C35,90 70,78 105,88 C140,98 175,118 210,108 C245,98 280,78 315,88 C350,98 385,115 420,105 C455,95 490,82 525,92 C560,102 595,112 630,102 C665,92 690,88 700,95"/>
-                        </path>
-                        <!-- Recording indicator -->
-                        <circle cx="30" cy="20" r="6" fill="#E85D4A">
-                            <animate attributeName="opacity" dur="1.5s" repeatCount="indefinite" values="1;0.3;1"/>
-                        </circle>
-                        <text x="44" y="24" fill="#FFF8F0" opacity="0.6" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="2">REC</text>
-                        <!-- Subtle text -->
-                        <text x="350" y="185" text-anchor="middle" fill="#FFF8F0" opacity="0.12" font-family="'Playfair Display', serif" font-size="14" letter-spacing="8">16 DÉCEMBRE · L'ESCOGRIFFE</text>
-                    </svg>
-                </div>
+                <img src="images/affiche-lancement.jpg" alt="Affiche du party de lancement de lepato, mercredi 16 décembre 2026, 20 h, à L'Escogriffe" class="news-card-poster">
                 <div class="news-card-body">
                     <div class="news-date">16 décembre 2026</div>
                     <div class="news-card-title">Concert de lancement d'Encore Plus!</div>
@@ -932,114 +143,70 @@
         </div>
     </section>
 
-    <!-- GALLERY -->
-    <section class="gallery" id="photos">
-        <div class="reveal">
-            <span class="section-label">Galerie</span>
-            <h2 class="section-title">En images</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item wide reveal">
-                <img src="images/banner.jpg" alt="lepato en ville">
-            </div>
-            <div class="gallery-item tall reveal">
-                <img src="images/hat.jpg" alt="lepato en concert">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/photo2.jpg" alt="lepato portrait">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/shade.jpg" alt="lepato silhouette">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/hands.jpg" alt="lepato guitare">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/blue.jpg" alt="lepato portrait bleu">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/wood.jpg" alt="lepato acoustique">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/photo1.jpg" alt="lepato assis">
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/pochette.jpg" alt="Et Puis? pochette">
-            </div>
-        </div>
-    </section>
-
-    <!-- COLLABORATORS (masqué pour réactivation future) -->
-    <!--
+    <!-- COLLABORATORS -->
     <section class="collaborators" id="equipe">
         <div class="reveal">
             <span class="section-label">L'équipe</span>
             <h2 class="section-title">Collaborateurs</h2>
         </div>
         <div class="collab-grid">
+
             <div class="collab-card reveal">
-                <div class="collab-avatar-placeholder">🎸</div>
-                <div class="collab-name">Nom du musicien</div>
-                <div class="collab-role">Guitare</div>
-                <div class="collab-desc">Courte description ou parcours du collaborateur.</div>
-                <a href="#" class="collab-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
-                    Site web
-                </a>
+                <div class="collab-avatar-placeholder">🎬</div>
+                <div class="collab-name">John Henley</div>
+                <div class="collab-role">Vidéoclips</div>
+                <div class="collab-desc">12 Singes</div>
             </div>
-            <div class="collab-card reveal">
-                <div class="collab-avatar-placeholder">🥁</div>
-                <div class="collab-name">Nom du musicien</div>
-                <div class="collab-role">Batterie</div>
-                <div class="collab-desc">Courte description ou parcours du collaborateur.</div>
-                <a href="#" class="collab-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
-                    Site web
-                </a>
-            </div>
-            <div class="collab-card reveal">
-                <div class="collab-avatar-placeholder">🎹</div>
-                <div class="collab-name">Nom du musicien</div>
-                <div class="collab-role">Claviers</div>
-                <div class="collab-desc">Courte description ou parcours du collaborateur.</div>
-                <a href="#" class="collab-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
-                    Site web
-                </a>
-            </div>
-            <div class="collab-card reveal">
-                <div class="collab-avatar-placeholder">🎛️</div>
-                <div class="collab-name">Nom du studio</div>
-                <div class="collab-role">Enregistrement & mixage</div>
-                <div class="collab-desc">Courte description du studio et de l'ingénieur du son.</div>
-                <a href="#" class="collab-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
-                    Site web
-                </a>
-            </div>
+
             <div class="collab-card reveal">
                 <div class="collab-avatar-placeholder">📸</div>
-                <div class="collab-name">Nom du photographe</div>
+                <div class="collab-name">Émilie Pelletier</div>
                 <div class="collab-role">Photographie</div>
-                <div class="collab-desc">Courte description ou parcours du photographe.</div>
-                <a href="#" class="collab-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
-                    Portfolio
-                </a>
+                <a href="https://www.instagram.com/emiliepelletierphotographe/" class="collab-link" target="_blank" rel="noopener">@emiliepelletierphotographe</a>
             </div>
+
             <div class="collab-card reveal">
-                <div class="collab-avatar-placeholder">🎨</div>
-                <div class="collab-name">Nom du graphiste</div>
-                <div class="collab-role">Direction artistique & graphisme</div>
-                <div class="collab-desc">Courte description ou parcours du graphiste.</div>
-                <a href="#" class="collab-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10zm7 0v6h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3h7z"/></svg>
-                    Portfolio
-                </a>
+                <div class="collab-avatar-placeholder">🎚️</div>
+                <div class="collab-name">Alejandro de Icaza</div>
+                <div class="collab-role">Mixage</div>
+                <div class="collab-desc">Essaye, Faux pas</div>
             </div>
+
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎛️</div>
+                <div class="collab-name">Valentin Huchon</div>
+                <div class="collab-role">Mixage</div>
+                <div class="collab-desc">Fonkyson · À contresens</div>
+            </div>
+
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">💿</div>
+                <div class="collab-name">Reuben Ghose</div>
+                <div class="collab-role">Matriçage</div>
+            </div>
+
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎸</div>
+                <div class="collab-name">Julien Álvarez Thomet</div>
+                <div class="collab-role">Réalisation</div>
+                <div class="collab-desc">Aussi à la basse</div>
+            </div>
+
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🥁</div>
+                <div class="collab-name">Harvey Bien Aimée</div>
+                <div class="collab-role">Batterie</div>
+                <div class="collab-desc">A notamment joué avec Corneille, Dominique Fils-Aimée et BranVan3000.</div>
+            </div>
+
+            <div class="collab-card reveal">
+                <div class="collab-avatar-placeholder">🎹</div>
+                <div class="collab-name">Alix Noël</div>
+                <div class="collab-role">Claviers</div>
+            </div>
+
         </div>
     </section>
-    -->
 
     <!-- CONNECT -->
     <section class="connect" id="connect">
@@ -1063,6 +230,10 @@
             <a href="https://www.youtube.com/@lepato3" target="_blank" rel="noopener" class="social-link">
                 <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12z"/></svg>
                 YouTube
+            </a>
+            <a href="https://www.bandsintown.com/fr/a/15660860-lepato" target="_blank" rel="noopener" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zM5 9h14v11H5V9zm2 2v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg>
+                Bandsintown
             </a>
         </div>
     </section>
