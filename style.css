@@ -677,6 +677,14 @@ section {
     transform: translateY(-3px);
 }
 
+.media-thumb {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+}
+
 .media-title {
     font-weight: 600;
 }
