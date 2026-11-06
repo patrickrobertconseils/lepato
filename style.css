@@ -712,6 +712,10 @@ section {
     color: rgba(255, 248, 240, 0.6);
 }
 
+.media-contact + .media-contact {
+    margin-top: 0.4rem;
+}
+
 .media-contact a {
     color: var(--sun);
     text-decoration: none;
